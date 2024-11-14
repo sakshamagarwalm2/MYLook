@@ -1,16 +1,39 @@
-import React, { Suspense } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Environment } from '@react-three/drei';
+import React, { Suspense, useRef } from 'react';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Environment } from '@react-three/drei';
 import { useLoader } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { RGBShiftShader } from 'three/examples/jsm/shaders/RGBShiftShader';
 import { Effects } from '@react-three/drei';
+import * as THREE from 'three';
 
 const Model = () => {
   const gltf = useLoader(GLTFLoader, './Model/DamagedHelmet.gltf');
+  const modelRef = useRef();
+  const { viewport } = useThree();
+
+  useFrame(({ mouse }) => {
+    const x = (mouse.x * viewport.width) / 2;
+    const y = (mouse.y * viewport.height) / 2;
+
+    // Smooth rotation
+    if (modelRef.current) {
+      modelRef.current.rotation.y = THREE.MathUtils.lerp(
+        modelRef.current.rotation.y,
+        x * 0.5,
+        0.1
+      );
+      modelRef.current.rotation.x = THREE.MathUtils.lerp(
+        modelRef.current.rotation.x,
+        -y * 0.5,
+        0.1
+      );
+    }
+  });
   
   return (
     <primitive 
+      ref={modelRef}
       object={gltf.scene} 
       scale={1}
       position={[0, 0, 0]}
@@ -28,7 +51,7 @@ const RGBShiftEffect = () => {
 
 const HelmetViewer = () => {
   return (
-    <div style={{ width: '100vw', height: '100vh' }}>
+    <div style={{ width: '100vw', height: '100vh', position: 'absolute', top: 0}}>
       <Canvas
         camera={{
           fov: 40,
@@ -36,10 +59,11 @@ const HelmetViewer = () => {
         }}
       >
         <Suspense fallback={null}>
-          <OrbitControls />
+          {/* <OrbitControls /> */}
           <Environment 
             files="https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/pond_bridge_night_1k.hdr"
-            background
+            background = {false}
+            preset={null}
           />
           <Model />
           <RGBShiftEffect />
