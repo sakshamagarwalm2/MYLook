@@ -1,3 +1,4 @@
+import React from 'react';
 import { ChevronFirst, ChevronLast} from "lucide-react"
 import logo from "../assets/logo.png"
 import profile from "../assets/profile.png"
@@ -6,12 +7,12 @@ import { createContext, useContext, useState } from "react"
 const SidebarContext = createContext();
 
 export default function Sidebar({ children }) {
-    const [expanded, setExpanded] = useState(true)
+    const [expanded, setExpanded] = useState(false)
     return (
         <>
             <aside className="h-screen">
                 <nav className="h-full flex flex-col bg-white/20 backdrop-blur-sm border-r shadow-sm">
-                    <div className="p-4 pb-2 flex justify-between items-center">
+                    <div className="p-2 md:p-4 pb-1 md:pb-2 flex justify-between items-center">
                         <img src={logo} className={`overflow-hidden transition-all ${expanded ? "w-32" : "w-0"}`} alt="" />
                         <button onClick={() => setExpanded((curr) => !curr)} className="p-1.5 rounded-lg bg-white hover:bg-gray-100">
                             {expanded ? <ChevronFirst /> : <ChevronLast />}
@@ -20,11 +21,11 @@ export default function Sidebar({ children }) {
 
                     <SidebarContext.Provider value={{ expanded }}>
 
-                        <ul className="flex-1 px-3">{children}</ul>
+                        <ul className="flex-1 px-1 md:px-3">{children}</ul>
                     </SidebarContext.Provider>
 
-                    <div className="border-t flex p-3">
-                        <img src={profile} className="w-10 h-10 rounded-md" alt=""/>
+                    <div className="border-t flex p-1 md:p-3">
+                        <img src={profile} className="w-8 h-8 rounded-md" alt=""/>
                         <div className={`flex justify-between items-center overflow-hidden transition-all ${expanded ? "w-52 ml-3" : "w-0"} `}>
                             <div className="leading-4">
                                 <h4 className="text-lg text-white orbitron-100 ">SAKSHAM</h4>
