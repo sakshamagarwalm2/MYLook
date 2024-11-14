@@ -11,7 +11,7 @@ export default function Sidebar({ children }) {
     return (
         <>
             <aside className="h-screen">
-                <nav className="h-full flex flex-col bg-white/20 backdrop-blur-sm border-r shadow-sm">
+                <nav className="h-full flex flex-col bg-slate-400/20 backdrop-blur-sm border-r shadow-sm">
                     <div className="p-2 md:p-4 pb-1 md:pb-2 flex justify-between items-center">
                         <img src={logo} className={`overflow-hidden transition-all ${expanded ? "w-32" : "w-0"}`} alt="" />
                         <button onClick={() => setExpanded((curr) => !curr)} className="p-1.5 rounded-lg bg-white hover:bg-gray-100">
@@ -28,7 +28,7 @@ export default function Sidebar({ children }) {
                         <img src={profile} className="w-8 h-8 rounded-md" alt=""/>
                         <div className={`flex justify-between items-center overflow-hidden transition-all ${expanded ? "w-52 ml-3" : "w-0"} `}>
                             <div className="leading-4">
-                                <h4 className="text-lg text-white orbitron-100 ">SAKSHAM</h4>
+                                <h4 className="text-lg text-white orbitron ">SAKSHAM</h4>
                                 <span className="text-xs text-white">constgenius@gmail.com</span>
                             </div>
                         </div>

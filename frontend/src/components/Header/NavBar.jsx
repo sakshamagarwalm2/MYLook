@@ -5,7 +5,7 @@ function NavBar() {
 
   return (
     <>
-      <div className="flex overflow-hidden absolute z-50">
+      <div className="flex overflow-hidden z-50 fixed">
         <Sidebar>
           <SidebarItem icon={<Home size={20} />} text="Home" alert />
           <SidebarItem icon={<LayoutDashboard size={20} />} text="Dashboard" active />
