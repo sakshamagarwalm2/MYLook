@@ -36,7 +36,7 @@ export default function Sidebar({ children }) {
             {/* Mobile Toggle Button - Only visible on mobile */}
             <button 
                 onClick={toggleSidebar}
-                className={`fixed top-4 p-1.5 rounded-lg bg-blue-100 hover:bg-gray-100 z-50 md:hidden transition-all duration-300 ease-in-out 
+                className={`fixed top-4 p-1.5 rounded-lg bg-stone-300 text-black hover:bg-gray-100 z-50 md:hidden transition-all duration-300 ease-in-out 
                     ${isVisible ? "hidden" : "left-2"}`}
             >
                 {isVisible ? <ChevronFirst /> : <ChevronLast/>}
@@ -46,7 +46,7 @@ export default function Sidebar({ children }) {
             <aside className={`fixed md:relative h-screen transition-all duration-300 ease-in-out ${
                 isVisible ? 'translate-x-0' : '-translate-x-full'
             } md:translate-x-0`}>
-                <nav className="h-full flex flex-col bg-slate-400/20 backdrop-blur-sm border-r shadow-sm">
+                <nav className="h-full flex flex-col bg-zinc-800/30 backdrop-blur-sm border-r shadow-sm">
                     <div className="p-2 md:p-4 pb-1 md:pb-2 flex justify-between items-center">
                         <img 
                             src={logo} 
@@ -58,7 +58,7 @@ export default function Sidebar({ children }) {
                         {/* Desktop Toggle Button - Only visible on desktop */}
                         <button 
                             onClick={toggleSidebar}
-                            className="p-1.5 rounded-lg bg-blue-100 hover:bg-gray-100 hidden md:block"
+                            className="p-1.5 rounded-lg bg-stone-300 text-black hover:bg-gray-100 hidden md:block"
                         >
                             {expanded ? <ChevronFirst /> : <ChevronLast />}
                         </button>
@@ -98,8 +98,8 @@ export function SidebarItem({ icon, text, active, alert }) {
     return (
         <li className={`relative flex items-center py-2 px-3 my-1 font-medium rounded-md cursor-pointer transition-colors group ${
             active 
-                ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800" 
-                : "hover:bg-indigo-50 hover:text-indigo-800 text-white"
+                ? "bg-gradient-to-tr from-white to-stone-300 text-indigo-800" 
+                : "hover:bg-stone-300 hover:text-indigo-800 text-white"
         }`}>
             {icon}
             <span className={`overflow-hidden transition-all ${
@@ -109,7 +109,7 @@ export function SidebarItem({ icon, text, active, alert }) {
             </span>
 
             {!expanded && (
-                <div className={`absolute left-full rounded-md px-2 py-1 ml-6 bg-indigo-100 text-white text-sm invisible opacity-20 -translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0`}>
+                <div className={`absolute left-full rounded-md px-2 py-1 ml-6 bg-white/10 text-white text-sm invisible opacity-20 -translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0`}>
                     {text}
                 </div>
             )}

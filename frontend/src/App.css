@@ -10,6 +10,18 @@
     overflow-x: hidden;
 }
 
+.bg-theme{
+    background-color: rgb(15 23 42 / 1);
+}
+
+.bg-light-back{
+    background-color: #697565;
+}
+
+.bg-light{
+    background-color: #ECDFCC;
+}
+
 .orbitron {
     font-family: "Orbitron", sans-serif;
   }

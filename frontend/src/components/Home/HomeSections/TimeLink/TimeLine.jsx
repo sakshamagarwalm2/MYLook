@@ -4,28 +4,26 @@ const TimeLine = ({ timelines = [] }) => {
   return (
     <div className="text-center w-full">
       <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
-        {timelines.map((item,index)=>(
+        {timelines.map((item, index) => (
           <li key={index}>
-              <div className="timeline-middle">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              className="h-5 w-5"
+            {index == 0 && (
+              <hr className="mr-2 ml-2 bg-Black" />
+            )}
+            <div className="timeline-middle mr-2 ml-2 w-5 h-5 bg-black rounded-full flex justify-center items-center m-2">
+              <div className="w-2 h-2 bg-white rounded-full"></div>
+            </div>
+            <div
+              className={`${
+                index % 2 === 0
+                  ? "timeline-start md:text-end"
+                  : "timeline-end md:text-start"
+              } mb-10`}
             >
-              <path
-                fillRule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </div>
-          <div className={`${index % 2 === 0 ? "timeline-start md:text-end" : "timeline-end md:text-start"} mb-10`}>
-            <time className="font-mono italic">1984</time>
-            <div className="text-lg font-black">First Macintosh computer</div>
-            <div className="">ofvheu</div>
-          </div>
-          <hr />
+              <time className="text-sm italic">1984</time>
+              <div className="text-lg font-black">First Macintosh computer</div>
+              <div className="">ofvheu</div>
+            </div>
+              <hr className="mr-2 ml-2 bg-black" />
           </li>
         ))}
       </ul>
