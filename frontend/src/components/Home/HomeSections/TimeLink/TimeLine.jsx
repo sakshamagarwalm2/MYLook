@@ -6,7 +6,7 @@ const TimeLine = ({ timelines = [] }) => {
       <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
         {timelines.map((item, index) => (
           <li key={index}>
-            {index == 0 && (
+            {index === 0 && (
               <hr className="mr-2 ml-2 bg-Black" />
             )}
             <div className="timeline-middle mr-2 ml-2 w-5 h-5 bg-black rounded-full flex justify-center items-center m-2">
