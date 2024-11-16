@@ -1,3 +1,4 @@
+import Footer from "../Header/Footer";
 import Hero from "./HomeSections/Hero";
 import HomeSkill from "./HomeSections/HomeSkill";
 import ProjectHome from "./HomeSections/ProjectHome";
@@ -11,6 +12,7 @@ const Home = () => {
       <TimeLink/>
       <HomeSkill/>
       <ProjectHome/>
+      <Footer/>
     </div>
   );
 };
