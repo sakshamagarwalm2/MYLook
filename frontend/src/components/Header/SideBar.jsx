@@ -2,6 +2,7 @@ import React from 'react';
 import { ChevronFirst, ChevronLast } from "lucide-react";
 import logo from "../assets/logo.png";
 import { createContext, useContext, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const SidebarContext = createContext();
 
@@ -36,14 +37,14 @@ export default function Sidebar({ children }) {
             {/* Mobile Toggle Button - Only visible on mobile */}
             <button 
                 onClick={toggleSidebar}
-                className={`fixed top-4 p-1.5 rounded-lg bg-stone-300 text-black hover:bg-gray-100 z-50 md:hidden transition-all duration-300 ease-in-out 
+                className={`fixed top-4 p-1.5 rounded-lg bg-stone-300 text-black hover:bg-gray-100 md:hidden transition-all duration-300 ease-in-out 
                     ${isVisible ? "hidden" : "left-2"}`}
             >
                 {isVisible ? <ChevronFirst /> : <ChevronLast/>}
-            </button>
+            </button> 
 
             {/* Sidebar */}
-            <aside className={`fixed md:relative h-screen transition-all duration-300 ease-in-out ${
+            <aside className={`fixed md:relative h-screen transition-all duration-300 ease-in-out Z-100 ${
                 isVisible ? 'translate-x-0' : '-translate-x-full'
             } md:translate-x-0`}>
                 <nav className="h-full flex flex-col bg-zinc-800/30 backdrop-blur-sm border-r shadow-sm">
@@ -65,7 +66,13 @@ export default function Sidebar({ children }) {
                     </div>
 
                     <SidebarContext.Provider value={{ expanded }}>
-                        <ul className="flex-1 px-1 md:px-3">{children}</ul>
+                        <ul className="flex-1 px-1 md:px-3">
+                            {children.map((child, index) => (
+                                <Link to={child.props.to} key={index} onClick={() => setIsVisible(false)}>
+                                    {child}
+                                </Link>
+                            ))}
+                        </ul>
                     </SidebarContext.Provider>
 
                     <div className="border-t flex p-1 md:p-3">
@@ -82,13 +89,6 @@ export default function Sidebar({ children }) {
                 </nav>
             </aside>
 
-            {/* Overlay for mobile */}
-            {isMobile && isVisible && (
-                <div 
-                    className="fixed inset-0 z-30 md:hidden"
-                    onClick={() => setIsVisible(false)}
-                />
-            )}
         </>
     );
 }
