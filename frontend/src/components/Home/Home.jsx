@@ -1,5 +1,6 @@
 import Hero from "./HomeSections/Hero";
 import HomeSkill from "./HomeSections/HomeSkill";
+import ProjectHome from "./HomeSections/ProjectHome";
 import TimeLink from "./HomeSections/TimeLink/TimeLink";
 
 
@@ -9,6 +10,7 @@ const Home = () => {
       <Hero/>
       <TimeLink/>
       <HomeSkill/>
+      <ProjectHome/>
     </div>
   );
 };

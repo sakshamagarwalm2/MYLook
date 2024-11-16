@@ -17,7 +17,7 @@ export const AuroraBackground = ({
       {...props}
     >
       {/* Aurora container - position absolute relative to parent */}
-      <div className="absolute inset-0">
+      <div className="absolute -inset-3">
         <div
           className={cn(
             `
