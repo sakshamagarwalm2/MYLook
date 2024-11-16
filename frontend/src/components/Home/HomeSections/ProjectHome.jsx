@@ -8,13 +8,13 @@ const ProjectHome = () => {
       <div className="text-3xl font-bold pt-5">
         Check My projects
       </div>
-      <div className="w-full h-full">
+      <div className="w-full h-full pt-3 md:pt-0">
       <ContainerScroll
         titleComponent={
           <>
-            <h1 className="text-4xl font-semibold text-black">
+            <h1 className="text-xl md:text-3xl font-normal text-black">
               Unleash the power of <br />
-              <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none">
+              <span className="text-4xl md:text-[6rem] font-bold leading-none">
                 Scroll Animations
               </span>
             </h1>
@@ -26,7 +26,7 @@ const ProjectHome = () => {
           alt="hero"
           height={720}
           width={1400}
-          className="mx-auto rounded-2xl object-cover h-full object-left-top"
+          className="mx-auto rounded-2xl object-center h-full"
           draggable={false}
         />
       </ContainerScroll>
