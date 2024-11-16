@@ -2,7 +2,6 @@ import { LayoutDashboard, Home, Layers } from "lucide-react";
 import Sidebar, { SidebarItem } from "./SideBar"
 
 function NavBar() {
-  const currentPath = window.location.pathname;
 
   return (
     <>
