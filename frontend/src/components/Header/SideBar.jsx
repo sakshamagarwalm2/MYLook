@@ -73,7 +73,9 @@ export default function Sidebar({ children }) {
                                 </Link>
                             ))}
                             
-                        <div className="p-3 flex justify-center items-center flex-col gap-3">
+                        <div className={`p-3 w-full flex justify-evenly  items-center gap-3 ${
+                                expanded ? "flex-row" : "flex-col"
+                            }`}>
                         <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300">
                             <Github size={20} />
                         </a>
