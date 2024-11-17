@@ -16,6 +16,7 @@ const WavyBackground = ({
   const noise = createNoise3D();
   let w, h, nt, i, x, ctx, canvas;
   const canvasRef = useRef(null);
+  const animationIdRef = useRef(null);
 
   const getSpeed = () => {
     switch (speed) {
@@ -66,21 +67,22 @@ const WavyBackground = ({
     }
   };
 
-  let animationId;
   const render = () => {
     ctx.fillStyle = backgroundFill || "black";
     ctx.globalAlpha = waveOpacity || 0.2;
     ctx.fillRect(0, 0, w, h);
     drawWave(5);
-    animationId = requestAnimationFrame(render);
+    animationIdRef.current = requestAnimationFrame(render);
   };
 
   useEffect(() => {
     init();
     return () => {
-      cancelAnimationFrame(animationId);
+      if (animationIdRef.current) {
+        cancelAnimationFrame(animationIdRef.current);
+      }
     };
-  }, []);
+  }, [init]);
 
   const [isSafari, setIsSafari] = useState(false);
 

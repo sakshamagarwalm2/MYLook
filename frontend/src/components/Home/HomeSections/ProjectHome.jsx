@@ -33,9 +33,10 @@ const ProjectHome = () => {
       </div>
       
       <div className="flex justify-center items-center pb-5">
-        <button className="inline-flex h-auto p-4 w-[20rem] uppercase text-xl flex-wrap animate-shimmer items-center justify-center rounded-xl border-2 border-slate-400 focus:border-slate-200 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 hover:text-white transition-colors focus:text-slate-100">
-          Pojects Of creation
-        </button></div>
+        <a href="/project" className="inline-flex h-auto p-4 w-[20rem] uppercase text-xl flex-wrap animate-shimmer items-center justify-center rounded-xl border-2 border-slate-400 focus:border-slate-200 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 hover:text-white transition-colors focus:text-slate-100">
+          Projects Of Creation
+        </a>
+      </div>
     </div>
   );
 };
