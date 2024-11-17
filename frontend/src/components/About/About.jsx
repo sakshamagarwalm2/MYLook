@@ -1,14 +1,15 @@
 import React from "react";
 import WavyBackground from "./wavy-background";
+import AboutCards from "./AboutCards";
 
 const About = () => {
   return (
-    <div className="w-full h-screen flex justify-center items-center orbitron bg-black flex-col">
-      <div className="absolute w-full h-auto">
+    <div className="w-full h-full flex justify-center items-center orbitron flex-col">
+      <div className="fixed -z-10 w-full h-full top-0 ">
         <WavyBackground />
       </div>
-      <div className="orbitron relative text-3xl w-full h-screen text-white font-bold flex justify-center items-center flex-col">
-        About
+      <div className="orbitron w-full h-full text-white flex justify-center items-center flex-col bg-dot-white/[0.2]">
+        <AboutCards/>
       </div>
     </div>
   );
