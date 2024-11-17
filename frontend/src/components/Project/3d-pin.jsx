@@ -2,6 +2,84 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "../../lib/utils";
 
+// Sample data for projects with proper URLs
+const PROJECTS = [
+  {
+    id: 1,
+    title: "Project Name 1",
+    description: "Description for project 1",
+    imageUrl: "/api/placeholder/400/320",
+    href: "https://project1.example.com"
+  },
+  {
+    id: 2,
+    title: "Project Name 2",
+    description: "Description for project 2",
+    imageUrl: "/api/placeholder/400/320",
+    href: "https://project2.example.com"
+  },
+  {
+    id: 3,
+    title: "Project Name 3",
+    description: "Description for project 3",
+    imageUrl: "/api/placeholder/400/320",
+    href: "https://project3.example.com"
+  },
+  {
+    id: 4,
+    title: "Project Name 4",
+    description: "Description for project 4",
+    imageUrl: "/api/placeholder/400/320",
+    href: "https://project4.example.com"
+  },
+  {
+    id: 5,
+    title: "Project Name 5",
+    description: "Description for project 5",
+    imageUrl: "/api/placeholder/400/320",
+    href: "https://project5.example.com"
+  },
+  {
+    id: 6,
+    title: "Project Name 6",
+    description: "Description for project 6",
+    imageUrl: "/api/placeholder/400/320",
+    href: "https://project6.example.com"
+  },
+  {
+    id: 7,
+    title: "Project Name 7",
+    description: "Description for project 7",
+    imageUrl: "/api/placeholder/400/320",
+    href: "https://project7.example.com"
+  },
+  {
+    id: 8,
+    title: "Project Name 8",
+    description: "Description for project 8",
+    imageUrl: "/api/placeholder/400/320",
+    href: "https://project8.example.com"
+  },
+  {
+    id: 9,
+    title: "Project Name 9",
+    description: "Description for project 9",
+    imageUrl: "/api/placeholder/400/320",
+    href: "https://project9.example.com"
+  },
+  {
+    id: 10,
+    title: "Project Name 10",
+    description: "Description for project 10",
+    imageUrl: "/api/placeholder/400/320",
+    href: "https://project10.example.com"
+  }
+];
+
+/**
+ * PinContainer Component
+ * Creates a 3D-effect container that responds to hover interactions
+ */
 export const PinContainer = ({
   children,
   title,
@@ -20,10 +98,12 @@ export const PinContainer = ({
 
   return (
     <a
-      className={cn("relative group/pin z-500 w-auto h-96 cursor-pointer", containerClassName)}
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={cn("relative group/pin z-50 w-auto h-96 cursor-pointer", containerClassName)}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      href={href || "/"}
     >
       <div
         style={{
@@ -38,7 +118,9 @@ export const PinContainer = ({
           }}
           className="p-4 flex justify-start items-start rounded-2xl shadow-[0_8px_16px_rgb(0_0_0/0.4)] bg-black border border-white/[0.1] group-hover/pin:border-white/[0.2] transition duration-700 overflow-hidden"
         >
-          <div className={cn("relative z-50", className)}>{children}</div>
+          <div className={cn("relative z-50", className)}>
+            {children}
+          </div>
         </div>
       </div>
       <PinPerspective title={title} href={href} />
@@ -46,6 +128,10 @@ export const PinContainer = ({
   );
 };
 
+/**
+ * PinPerspective Component
+ * Creates the hover effect overlay with animated elements
+ */
 export const PinPerspective = ({
   title,
   href
@@ -75,8 +161,9 @@ export const PinPerspective = ({
           }}
           className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
         >
-          <>
+          {[0, 2, 4].map((delay) => (
             <motion.div
+              key={delay}
               initial={{
                 opacity: 0,
                 scale: 0,
@@ -91,49 +178,11 @@ export const PinPerspective = ({
               transition={{
                 duration: 6,
                 repeat: Infinity,
-                delay: 0
+                delay: delay
               }}
-              className="absolute left-1/2 top-1/2 h-[11.25rem] w-[11.25rem] rounded-[50%] bg-sky-500/[0.08] shadow-[0_8px_16px_rgb(0_0_0/0.4)]"
+              className="absolute left-1/2 top-1/2 h-[11rem] w-[11.25rem] rounded-[50%] bg-sky-500/[0.08] shadow-[0_8px_16px_rgb(0_0_0/0.4)]"
             />
-            <motion.div
-              initial={{
-                opacity: 0,
-                scale: 0,
-                x: "-50%",
-                y: "-50%"
-              }}
-              animate={{
-                opacity: [0, 1, 0.5, 0],
-                scale: 1,
-                z: 0
-              }}
-              transition={{
-                duration: 6,
-                repeat: Infinity,
-                delay: 2
-              }}
-              className="absolute left-1/2 top-1/2 h-[11.25rem] w-[11.25rem] rounded-[50%] bg-sky-500/[0.08] shadow-[0_8px_16px_rgb(0_0_0/0.4)]"
-            />
-            <motion.div
-              initial={{
-                opacity: 0,
-                scale: 0,
-                x: "-50%",
-                y: "-50%"
-              }}
-              animate={{
-                opacity: [0, 1, 0.5, 0],
-                scale: 1,
-                z: 0
-              }}
-              transition={{
-                duration: 6,
-                repeat: Infinity,
-                delay: 4
-              }}
-              className="absolute left-1/2 top-1/2 h-[11.25rem] w-[11.25rem] rounded-[50%] bg-sky-500/[0.08] shadow-[0_8px_16px_rgb(0_0_0/0.4)]"
-            />
-          </>
+          ))}
         </div>
 
         <>
@@ -146,3 +195,32 @@ export const PinPerspective = ({
     </motion.div>
   );
 };
+
+// Example usage component showing how to display the projects
+const ProjectDisplay = () => {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-8">
+      {PROJECTS.map((project) => (
+        <PinContainer
+          key={project.id}
+          title={project.title}
+          href={project.href}
+        >
+          <div className="space-y-4">
+            <img
+              src={project.imageUrl}
+              alt={project.title}
+              className="w-full h-48 object-cover rounded-lg"
+            />
+            <div className="p-2">
+              <h3 className="text-white text-lg font-semibold">{project.title}</h3>
+              <p className="text-gray-400 text-sm">{project.description}</p>
+            </div>
+          </div>
+        </PinContainer>
+      ))}
+    </div>
+  );
+};
+
+export default ProjectDisplay;
