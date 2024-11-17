@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronFirst, ChevronLast } from "lucide-react";
+import { ChevronFirst, ChevronLast, Github, Linkedin, Twitter, Mail } from "lucide-react";
 import logo from "../assets/logo.png";
 import { createContext, useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -72,8 +72,24 @@ export default function Sidebar({ children }) {
                                     {child}
                                 </Link>
                             ))}
+                            
+                        <div className="p-3 flex justify-center items-center flex-col gap-3">
+                        <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300">
+                            <Github size={20} />
+                        </a>
+                        <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-400">
+                            <Linkedin size={20} />
+                        </a>
+                        <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-white hover:text-sky-400">
+                            <Twitter size={20} />
+                        </a>
+                        <a href="mailto:sakshamagarwal@gmail.com" className="text-white hover:text-red-400">
+                            <Mail size={20} />
+                        </a>
+                    </div>
                         </ul>
                     </SidebarContext.Provider>
+                    
 
                     <div className="border-t flex p-1 md:p-3">
                         <img src={logo} className="w-8 h-8 rounded-md" alt=""/>
