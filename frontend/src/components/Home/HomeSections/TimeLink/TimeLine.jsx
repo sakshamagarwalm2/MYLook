@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { databases} from '../../../../config.js'
+import { databases, DATABASE_ID, TIMELINE_COLLECTION_ID} from '../../../../config.js'
 
 const Timeline = () => {
   const [items, setTimeline] = useState([])
@@ -12,8 +12,8 @@ const Timeline = () => {
   const init = async () => {
     try {
       const response = await databases.listDocuments(
-        import.meta.env.DATABASE_ID,
-        import.meta.env.TIMELINE_COLLECTION_ID,
+        DATABASE_ID,
+        TIMELINE_COLLECTION_ID,
         // You might want to add queries or other options here
       );
       

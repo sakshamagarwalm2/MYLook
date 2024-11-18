@@ -1,23 +1,23 @@
 import * as sdk from "node-appwrite";
 
 // Check if required environment variables are present
-if (!process.env.NEXT_PUBLIC_ENDPOINT || 
-    !process.env.PROJECT_ID || 
-    !process.env.API_KEY || 
-    !process.env.DATABASE_ID) {
+if (!process.env.REACT_APP_NEXT_PUBLIC_ENDPOINT || 
+    !process.env.REACT_APP_PROJECT_ID || 
+    !process.env.REACT_APP_API_KEY || 
+    !process.env.REACT_APP_DATABASE_ID) {
     throw new Error('Required environment variables are missing');
 }
 
 // Export environment variables
 export const {
-    NEXT_PUBLIC_ENDPOINT: ENDPOINT,
-    PROJECT_ID,
-    API_KEY,
-    DATABASE_ID,
-    ABOUT_COLLECTION_ID,
-    TIMELINE_COLLECTION_ID,
-    PROJECTS_COLLECTION_ID,
-    BUCKET_ID,
+    REACT_APP_NEXT_PUBLIC_ENDPOINT: ENDPOINT,
+    REACT_APP_PROJECT_ID: PROJECT_ID,
+    REACT_APP_API_KEY: API_KEY,
+    REACT_APP_DATABASE_ID: DATABASE_ID,
+    REACT_APP_ABOUT_COLLECTION_ID: ABOUT_COLLECTION_ID,
+    REACT_APP_TIMELINE_COLLECTION_ID: TIMELINE_COLLECTION_ID,
+    REACT_APP_PROJECTS_COLLECTION_ID: PROJECT_COLLECTION_ID,
+    REACT_APP_BUCKET_ID: BUCKET_ID,
 } = process.env;
 
 // Initialize Appwrite client
