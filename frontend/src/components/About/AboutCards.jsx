@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Download, Award, Cpu, Github, Linkedin, Twitter, Mail } from "lucide-react";
 import { ShineBorder } from "../Home/HomeSections/Skills/ShineBorder";
 import { HyperText } from "./Hypertext";
 import profilepic from "../assets/logo.png";
 import Quote from "../assets/Quoto.png";
+import { databases, storage, DATABASE_ID, STATS_COLLECTION_ID, CERTIFICATIONS_COLLECTION_ID, BUCKET_ID, RESUME_FILE_ID } from '../../config.js';
+
 
 import {
   TextRevealCard,
@@ -12,21 +14,48 @@ import {
 } from "./text-reveal-card";
 
 const AboutCards = () => {
-  const technologies = ["Full-Stack", "MERN", "AI/ML", "DeepLearning"];
 
-  const stats = [
-    { value: "5+", label: "Years Experience" },
-    { value: "50+", label: "Projects Completed" },
-    { value: "20+", label: "Open Source" },
-    { value: "1000+", label: "Contributions" },
-  ];
+  const [stats, setStats] = useState([]);
+  const [certifications, setCertifications] = useState([]);
+  const [resumeFile, setResumeFile] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const certifications = [
-    "Best AI Innovation Award 2023",
-    "Google Cloud Certified", 
-    "AWS Solutions Architect",
-  ];
+  useEffect(() => {
+    fetchDynamicContent();
+  }, []);
 
+  const fetchDynamicContent = async () => {
+    try {
+      // Fetch Stats
+      const statsResponse = await databases.listDocuments(
+        DATABASE_ID, 
+        STATS_COLLECTION_ID
+      );
+        setStats(statsResponse.documents);
+
+      // Fetch Certifications
+      const certsResponse = await databases.listDocuments(
+        DATABASE_ID, 
+        CERTIFICATIONS_COLLECTION_ID
+      );
+        setCertifications(certsResponse.documents);
+
+      // Fetch Resume from Storage
+      const resumeResponse = await storage.getFileDownload(
+        BUCKET_ID, 
+        RESUME_FILE_ID
+      );
+      setResumeFile(resumeResponse);
+
+      setLoading(false);
+    } catch (err) {
+      console.error('Error fetching dynamic content:', err);
+      setError(err.message);
+      setLoading(false);
+    }
+  };
+  // sociallinks will be static
   const socialLinks = [
     {
       name: "GitHub",
@@ -55,13 +84,16 @@ const AboutCards = () => {
   ];
 
   const handleDownloadResume = async () => {
+    if (!resumeFile) {
+      console.error('No resume file available');
+      return;
+    }
+
     try {
-      const response = await fetch('/api/resume'); // Your backend endpoint
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
+      const url = window.URL.createObjectURL(new Blob([resumeFile]));
       const a = document.createElement('a');
       a.href = url;
-      a.download = "Saksham_Agarwal_Resume.pdf"; // Name for downloaded file
+      a.download = "Saksham_Agarwal_Resume.pdf";
       document.body.appendChild(a);
       a.click();
       window.URL.revokeObjectURL(url);
@@ -70,6 +102,7 @@ const AboutCards = () => {
       console.error('Error downloading resume:', error);
     }
   };
+
 
   return (
     <div className="h-full w-full text-white p-6">
@@ -95,18 +128,6 @@ const AboutCards = () => {
                 Full Stack Developer & AI Engineer & Quantum Computing
                 Enthusiast
               </p>
-
-              {/* Technologies */}
-              <div className="flex flex-wrap justify-center gap-2 mb-6">
-                {technologies.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-2 py-1 bg-zinc-800/20 rounded-full text-sm font-light"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
 
               {/* Action Buttons */}
               <div className="space-y-3">
@@ -156,10 +177,10 @@ const AboutCards = () => {
                 Awards & Certifications
               </h2>
               <div className="space-y-3">
-                {certifications.map((cert) => (
-                  <div key={cert} className="flex items-center gap-3">
+              {certifications.map((cert) => (
+                  <div key={cert.title} className="flex items-center gap-3">
                     <Award className="w-5 h-5 text-orange-300" />
-                    <span>{cert}</span>
+                    <span>{cert.title}</span>
                   </div>
                 ))}
               </div>
@@ -208,44 +229,13 @@ const AboutCards = () => {
 
                 <div className="flex flex-wrap gap-2 mb-4">
                   {[
-                    "Machine Learning",
-                    "Nlp",
-                    "scipy",
-                    "pytorch",
-                    "deep learning",
-                    "tensorflow",
-                    "keras",
-                    "python",
-                    "qiskit",
-                    "cirq",
-                    "typescript",
-                    "javascript",
-                    "framerMotion",
-                    "numpy",
-                    "pandas",
-                    "scikitlearn",
-                    "vectordb",
-                    "flask",
-                    "streamlit",
-                    "opencv",
-                    "react",
-                    "nodejs",
-                    "expressjs",
-                    "nextjs",
-                    "postgresql",
-                    "firebase",
-                    "docker",
-                    "git",
-                    "github",
-                    "figma",
-                    "threedjs",
-                    "fastapi",
-                    "mysql",
-                    "mongodb",
+                    "AI / Machine & Deep Learning",
+                    "Web Dev (Frontend+Backend)",
+                    "Quantum Computing",
                   ].map((tech) => (
                     <span
                       key={tech}
-                      className="px-2 py-1 pt-1 bg-zinc-800 rounded-full text-sm font-light"
+                      className="px-2 py-1 pt-2 bg-zinc-800 rounded-full text-sm font-light"
                     >
                       {tech}
                     </span>

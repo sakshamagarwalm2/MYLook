@@ -47,9 +47,9 @@ const Timeline = () => {
                   : "timeline-end md:text-start"
               } mb-10`}
             >
-              <time className="text-sm italic">{item.year}</time>
-              <div className="text-lg font-black">{item.title}</div>
-              <div className="">{item.description}</div>
+              <div className="text-sm italic text-start">{item.year}</div>
+              <div className="text-lg font-black text-start">{item.title}</div>
+              <div className="text-start">{item.description}</div>
             </div>
             <hr className="mr-2 ml-2 bg-black" />
           </li>

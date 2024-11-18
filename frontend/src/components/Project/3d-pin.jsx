@@ -8,72 +8,9 @@ const PROJECTS = [
     id: 1,
     title: "Project Name 1",
     description: "Description for project 1",
-    imageUrl: "/api/placeholder/400/320",
+    // imageUrl: "/api/placeholder/400/320",
     href: "https://project1.example.com"
   },
-  {
-    id: 2,
-    title: "Project Name 2",
-    description: "Description for project 2",
-    imageUrl: "/api/placeholder/400/320",
-    href: "https://project2.example.com"
-  },
-  {
-    id: 3,
-    title: "Project Name 3",
-    description: "Description for project 3",
-    imageUrl: "/api/placeholder/400/320",
-    href: "https://project3.example.com"
-  },
-  {
-    id: 4,
-    title: "Project Name 4",
-    description: "Description for project 4",
-    imageUrl: "/api/placeholder/400/320",
-    href: "https://project4.example.com"
-  },
-  {
-    id: 5,
-    title: "Project Name 5",
-    description: "Description for project 5",
-    imageUrl: "/api/placeholder/400/320",
-    href: "https://project5.example.com"
-  },
-  {
-    id: 6,
-    title: "Project Name 6",
-    description: "Description for project 6",
-    imageUrl: "/api/placeholder/400/320",
-    href: "https://project6.example.com"
-  },
-  {
-    id: 7,
-    title: "Project Name 7",
-    description: "Description for project 7",
-    imageUrl: "/api/placeholder/400/320",
-    href: "https://project7.example.com"
-  },
-  {
-    id: 8,
-    title: "Project Name 8",
-    description: "Description for project 8",
-    imageUrl: "/api/placeholder/400/320",
-    href: "https://project8.example.com"
-  },
-  {
-    id: 9,
-    title: "Project Name 9",
-    description: "Description for project 9",
-    imageUrl: "/api/placeholder/400/320",
-    href: "https://project9.example.com"
-  },
-  {
-    id: 10,
-    title: "Project Name 10",
-    description: "Description for project 10",
-    imageUrl: "/api/placeholder/400/320",
-    href: "https://project10.example.com"
-  }
 ];
 
 /**
@@ -207,11 +144,6 @@ const ProjectDisplay = () => {
           href={project.href}
         >
           <div className="space-y-4">
-            <img
-              src={project.imageUrl}
-              alt={project.title}
-              className="w-full h-48 object-cover rounded-lg"
-            />
             <div className="p-2">
               <h3 className="text-white text-lg font-semibold">{project.title}</h3>
               <p className="text-gray-400 text-sm">{project.description}</p>

@@ -14,10 +14,14 @@ export const {
     REACT_APP_PROJECT_ID: PROJECT_ID,
     REACT_APP_API_KEY: API_KEY,
     REACT_APP_DATABASE_ID: DATABASE_ID,
-    REACT_APP_ABOUT_COLLECTION_ID: ABOUT_COLLECTION_ID,
+    REACT_APP_CERTIFICATIONS_COLLECTION_ID: CERTIFICATIONS_COLLECTION_ID,
     REACT_APP_TIMELINE_COLLECTION_ID: TIMELINE_COLLECTION_ID,
     REACT_APP_PROJECTS_COLLECTION_ID: PROJECT_COLLECTION_ID,
+    REACT_APP_SKILLS_COLLECTION_ID: SKILLS_COLLECTION_ID,
+    REACT_APP_STATS_COLLECTION_ID: STATS_COLLECTION_ID,
     REACT_APP_BUCKET_ID: BUCKET_ID,
+    REACT_APP_RESUME_FILE_ID: RESUME_FILE_ID,
+    REACT_APP_PROJECT_IMG_BUCKET_ID: PROJECT_IMG_BUCKET_ID,
 } = process.env;
 
 // Initialize Appwrite client
@@ -33,11 +37,11 @@ client
 export const databases = new sdk.Databases(client);
 export const storage = new sdk.Storage(client);
 
-const result = await databases.listDocuments(
-    DATABASE_ID, // databaseId
-    TIMELINE_COLLECTION_ID, // collectionId
-);
+// const result = await databases.listDocuments(
+//     DATABASE_ID, // databaseId
+//     TIMELINE_COLLECTION_ID, // collectionId
+// );
 
-console.log(result);
+// console.log(result);
 
 export default client;
