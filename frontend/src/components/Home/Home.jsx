@@ -7,10 +7,10 @@ import TimeLink from "./HomeSections/TimeLink/TimeLink";
 const Home = () => {
   return (
     <div className="orbitron text-white bg-theme">
-      <Hero/>
+      {/* <Hero/> */}
       <TimeLink/>
-      <HomeSkill/>
-      <ProjectHome/>
+      {/* <HomeSkill/> */}
+      {/* <ProjectHome/> */}
     </div>
   );
 };

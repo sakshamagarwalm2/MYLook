@@ -1,11 +1,39 @@
-import React from "react";
+import { useEffect, useState } from 'react'
+import { databases} from '../../../../config.js'
 
-const TimeLine = ({ timelines = [] }) => {
+const Timeline = () => {
+  const [items, setTimeline] = useState([])
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    init();
+  }, []);
+
+  const init = async () => {
+    try {
+      const response = await databases.listDocuments(
+        import.meta.env.DATABASE_ID,
+        import.meta.env.TIMELINE_COLLECTION_ID,
+        // You might want to add queries or other options here
+      );
+      
+      setTimeline(response.documents);
+      setError(null);
+    } catch (err) {
+      console.error('Error fetching timeline:', err);
+      setError(err.message);
+    }
+  }
+
+  if (error) {
+    return <div className="text-center text-red-500">Error loading timeline: {error}</div>
+  }
+
   return (
     <div className="text-center w-full">
       <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
-        {timelines.map((item, index) => (
-          <li key={index}>
+        {items.map((item, index) => (
+          <li key={item.$id || index}>  {/* Using $id if available for better key uniqueness */}
             {index === 0 && (
               <hr className="mr-2 ml-2 bg-Black" />
             )}
@@ -19,11 +47,11 @@ const TimeLine = ({ timelines = [] }) => {
                   : "timeline-end md:text-start"
               } mb-10`}
             >
-              <time className="text-sm italic">1984</time>
-              <div className="text-lg font-black">First Macintosh computer</div>
-              <div className="">ofvheu</div>
+              <time className="text-sm italic">{item.year}</time>
+              <div className="text-lg font-black">{item.title}</div>
+              <div className="">{item.description}</div>
             </div>
-              <hr className="mr-2 ml-2 bg-black" />
+            <hr className="mr-2 ml-2 bg-black" />
           </li>
         ))}
       </ul>
@@ -31,4 +59,4 @@ const TimeLine = ({ timelines = [] }) => {
   );
 };
 
-export default TimeLine;
+export default Timeline;
