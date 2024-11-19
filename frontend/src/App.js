@@ -5,6 +5,10 @@ import NavBar from './components/Header/NavBar';
 import Footer from './components/Header/Footer';
 import About from './components/About/About';
 import Project from './components/Project/Project';
+import LocomotiveScroll from 'locomotive-scroll';
+
+const locomotiveScroll = new LocomotiveScroll();
+
 
 function App() {
   return <Router className="overflow-hidden">
