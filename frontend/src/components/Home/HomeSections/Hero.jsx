@@ -8,11 +8,11 @@ import { Cpu } from "lucide-react";
 const Hero = () => {
   return (
     <section
-      className="w-full h-screen text-center orbitron-100 bg-cover bg-center text-white text-2xl -z-30"
+      className="w-full h-screen text-center orbitron-100 bg-cover bg-center text-white text-2xl -z-30 shadow-inner"
       style={{ backgroundImage: `url(${HeroImg})`, filter: "brightness(0.89)" }}
     >
       <BackgroundBeams />
-      <div className="z-50">
+      <div className="z-50"> 
         <ModelViewer />
       </div>
       <div className="w-full h-screen md:pt-4 overflow-hidden">
