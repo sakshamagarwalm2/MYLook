@@ -76,16 +76,16 @@ export default function Sidebar({ children }) {
                         <div className={`p-3 w-full flex justify-evenly  items-center gap-3 ${
                                 expanded ? "flex-row" : "flex-col"
                             }`}>
-                        <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300">
+                        <a href="https://github.com/sakshamagarwalm2" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300">
                             <Github size={20} />
                         </a>
-                        <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-400">
+                        <a href="https://www.linkedin.com/in/sakshamagarwalm2" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-400">
                             <Linkedin size={20} />
                         </a>
-                        <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-white hover:text-sky-400">
+                        <a href="https://x.com/sakshamHKRM2" target="_blank" rel="noopener noreferrer" className="text-white hover:text-sky-400">
                             <Twitter size={20} />
                         </a>
-                        <a href="mailto:sakshamagarwal@gmail.com" className="text-white hover:text-red-400">
+                        <a href="mailto:sakshamagarwalm2@gmail.com" className="text-white hover:text-red-400">
                             <Mail size={20} />
                         </a>
                     </div>

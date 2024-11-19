@@ -10,8 +10,8 @@ const HomeSkill = () => {
         <AuroraBackground />
       </div>
       <div className="w-full h-full relative flex flex-col justify-around  items-center text-white">
-        <div className="w-full orditron text-4xl relative pt-5 text-center mb-10">
-          Skills.
+        <div className="w-full orditron font-extrabold text-5xl md:text-7xl relative pt-5 text-center mb-10">
+          Skills_
         </div>
         <div className="w-full flex justify-evenly items-center lg:flex-row flex-col p-2">
           <div className="mt-5 mb-5 flex justify-center items-center flex-col">

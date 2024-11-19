@@ -1,11 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { Download, Award, Cpu, Github, Linkedin, Twitter, Mail } from "lucide-react";
+import {
+  Download,
+  Award,
+  Cpu,
+  Github,
+  Linkedin,
+  Twitter,
+  Mail,
+} from "lucide-react";
 import { ShineBorder } from "../Home/HomeSections/Skills/ShineBorder";
 import { HyperText } from "./Hypertext";
-import profilepic from "../assets/logo.png";
+import profilepic from "../assets/Author.jpg";
 import Quote from "../assets/Quoto.png";
-import { databases, storage, DATABASE_ID, STATS_COLLECTION_ID, CERTIFICATIONS_COLLECTION_ID, BUCKET_ID, RESUME_FILE_ID } from '../../config.js';
-
+import {
+  databases,
+  storage,
+  DATABASE_ID,
+  STATS_COLLECTION_ID,
+  CERTIFICATIONS_COLLECTION_ID,
+  BUCKET_ID,
+  RESUME_FILE_ID,
+} from "../../config.js";
 
 import {
   TextRevealCard,
@@ -14,7 +29,6 @@ import {
 } from "./text-reveal-card";
 
 const AboutCards = () => {
-
   const [stats, setStats] = useState([]);
   const [certifications, setCertifications] = useState([]);
   const [resumeFile, setResumeFile] = useState(null);
@@ -29,28 +43,28 @@ const AboutCards = () => {
     try {
       // Fetch Stats
       const statsResponse = await databases.listDocuments(
-        DATABASE_ID, 
+        DATABASE_ID,
         STATS_COLLECTION_ID
       );
-        setStats(statsResponse.documents);
+      setStats(statsResponse.documents);
 
       // Fetch Certifications
       const certsResponse = await databases.listDocuments(
-        DATABASE_ID, 
+        DATABASE_ID,
         CERTIFICATIONS_COLLECTION_ID
       );
-        setCertifications(certsResponse.documents);
+      setCertifications(certsResponse.documents);
 
       // Fetch Resume from Storage
       const resumeResponse = await storage.getFileDownload(
-        BUCKET_ID, 
+        BUCKET_ID,
         RESUME_FILE_ID
       );
       setResumeFile(resumeResponse);
 
       setLoading(false);
     } catch (err) {
-      console.error('Error fetching dynamic content:', err);
+      console.error("Error fetching dynamic content:", err);
       setError(err.message);
       setLoading(false);
     }
@@ -59,39 +73,39 @@ const AboutCards = () => {
   const socialLinks = [
     {
       name: "GitHub",
-      url: "https://github.com/yourusername",
+      url: "https://github.com/sakshamagarwalm2",
       icon: <Github />,
-      hoverColor: "hover:text-gray-800"
+      hoverColor: "hover:text-gray-800",
     },
     {
-      name: "LinkedIn", 
-      url: "https://linkedin.com/in/yourusername",
-      icon: <Linkedin/>,
-      hoverColor: "hover:text-blue-600"
+      name: "LinkedIn",
+      url: "https://www.linkedin.com/in/sakshamagarwalm2",
+      icon: <Linkedin />,
+      hoverColor: "hover:text-blue-600",
     },
     {
       name: "Twitter",
-      url: "https://twitter.com/yourusername", 
-      icon: <Twitter/>,
-      hoverColor: "hover:text-sky-500"
+      url: "https://x.com/sakshamHKRM2",
+      icon: <Twitter />,
+      hoverColor: "hover:text-sky-500",
     },
     {
       name: "Email",
-      url: "mailto:youremail@example.com",
-      icon: <Mail/>,
-      hoverColor: "hover:text-red-500"
-    }
+      url: "mailto:sakshamagarwalm2@gmail.com",
+      icon: <Mail />,
+      hoverColor: "hover:text-red-500",
+    },
   ];
 
   const handleDownloadResume = async () => {
     if (!resumeFile) {
-      console.error('No resume file available');
+      console.error("No resume file available");
       return;
     }
 
     try {
       const url = window.URL.createObjectURL(new Blob([resumeFile]));
-      const a = document.createElement('a');
+      const a = document.createElement("a");
       a.href = url;
       a.download = "Saksham_Agarwal_Resume.pdf";
       document.body.appendChild(a);
@@ -99,10 +113,9 @@ const AboutCards = () => {
       window.URL.revokeObjectURL(url);
       document.body.removeChild(a);
     } catch (error) {
-      console.error('Error downloading resume:', error);
+      console.error("Error downloading resume:", error);
     }
   };
-
 
   return (
     <div className="h-full w-full text-white p-6">
@@ -125,13 +138,13 @@ const AboutCards = () => {
                 text="Saksham Agarwal"
               />
               <p className="text-gray-300 mb-4">
-                Full Stack Developer & AI Engineer & Quantum Computing
+                AI Engineer & Full Stack Developer & Quantum Computing
                 Enthusiast
               </p>
 
               {/* Action Buttons */}
               <div className="space-y-3">
-                <button 
+                <button
                   onClick={handleDownloadResume}
                   className="inline-flex h-auto p-4 w-full uppercase text-lg animate-shimmer items-center justify-center rounded-xl border-2 border-slate-400 focus:border-slate-200 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 hover:text-white transition-colors focus:text-slate-100"
                 >
@@ -150,7 +163,9 @@ const AboutCards = () => {
             color={["#6a329f", "#5b31c8", "#ff2a73", "#ff9a32", "#ff3232"]}
           >
             <div className="p-6 w-full flex flex-col md:flex-row justify-evenly items-center">
-              <h2 className="text-xl font-bold mb-4 md:mb-0 h-full">Connect With Me_</h2>
+              <h2 className="text-xl font-bold mb-4 md:mb-0 h-full">
+                Connect With Me_
+              </h2>
               <div className="flex justify-center items-center">
                 {socialLinks.map((link) => (
                   <a
@@ -177,7 +192,7 @@ const AboutCards = () => {
                 Awards & Certifications
               </h2>
               <div className="space-y-3">
-              {certifications.map((cert) => (
+                {certifications.map((cert) => (
                   <div key={cert.title} className="flex items-center gap-3">
                     <Award className="w-5 h-5 text-orange-300" />
                     <span>{cert.title}</span>
@@ -196,7 +211,7 @@ const AboutCards = () => {
               <div className="grid grid-cols-2 gap-6">
                 {stats.map((stat) => (
                   <div key={stat.label} className="text-center">
-                    <div className="text-2xl font-bold mb-1">{stat.value}</div>
+                    <div className="text-2xl font-bold mb-1">{stat.value}+</div>
                     <div className="text-sm text-gray-400">{stat.label}</div>
                   </div>
                 ))}
@@ -214,17 +229,16 @@ const AboutCards = () => {
           >
             <div className="p-6">
               <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl font-bold">About_</h2>
+                <h2 className="text-xl font-bold">Author_</h2>
                 <span className="text-sm text-gray-400">jai vishvnath</span>
               </div>
 
               <div className="mb-4">
-                <h3 className="text-lg font-bold mb-2">Saksham agarwal</h3>
+                <h3 className="text-lg font-bold mb-2">the Vision</h3>
                 <p className="text-gray-300 mb-4">
-                  A state-of-the-art language model designed for advanced
-                  natural language processing and generation. Built with
-                  cutting-edge AI technology and optimized for real-world
-                  applications.
+                  उद्धरेदात्मनात्मानं नात्मानमवसादयेत्। <br/>~Bhagavad Gita 6.5 <br/>
+                  With faith in the divine and relentless self-effort, I aspire
+                  to make a meaningful impact in the world.
                 </p>
 
                 <div className="flex flex-wrap gap-2 mb-4">
@@ -263,8 +277,7 @@ const AboutCards = () => {
                 Sometimes, you just need to see it.
               </TextRevealCardTitle>
               <TextRevealCardDescription>
-                This is a text reveal card. Hover over the card to reveal the
-                hidden text.
+              Your trust, my innovation—together, we achieve excellence.
               </TextRevealCardDescription>
             </TextRevealCard>
           </ShineBorder>

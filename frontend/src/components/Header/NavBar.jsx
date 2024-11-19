@@ -9,9 +9,9 @@ function NavBar() {
         <Sidebar>
           <SidebarItem icon={<Home size={20} />} text="Home" to="/"
                       />
-          <SidebarItem icon={<LayoutDashboard size={20} />} text="About" to="/about"
+          <SidebarItem icon={<LayoutDashboard size={20} />} text="Author" to="/about"
                       />
-          <SidebarItem icon={<Layers size={20} />} text="Project" to="/project"
+          <SidebarItem icon={<Layers size={20} />} text="racks" to="/project"
                     />
           <hr className="my-3" />
         </Sidebar>

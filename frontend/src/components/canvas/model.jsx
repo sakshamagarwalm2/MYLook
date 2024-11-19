@@ -34,12 +34,12 @@ const Model = () => {
     if (modelRef.current) {
       modelRef.current.rotation.y = THREE.MathUtils.lerp(
         modelRef.current.rotation.y,
-        x * 0.4,
+        x * 0.5,
         0.1
       );
       modelRef.current.rotation.x = THREE.MathUtils.lerp(
         modelRef.current.rotation.x,
-        -y * 0.4,
+        -y * 0.5,
         0.1
       );
     }
@@ -49,13 +49,13 @@ const Model = () => {
   const scale = Math.min(viewport.width, viewport.height) * 0.37;
   
   // Adjust scale for mobile
-  const mobileScaleFactor = size.width < 768 ? 0.8 : 1;
+  const mobileScaleFactor = size.width < 768 ? 0.9 : 1;
   const finalScale = scale * mobileScaleFactor;
 
   // Improved mobile positioning
-  const isMobile = size.width < 768;
+  // const isMobile = size.width < 768;
   const xPos = 0; // Keep centered horizontally
-  const yPos = isMobile ? -0.4 : 0; // Slightly adjusted for mobile
+  const yPos = 0; // Slightly adjusted for mobile
   const zPos = 0;
 
   return (
