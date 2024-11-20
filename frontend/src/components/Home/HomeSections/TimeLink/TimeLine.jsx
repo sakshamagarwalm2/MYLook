@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react'
-import { databases, DATABASE_ID, TIMELINE_COLLECTION_ID} from '../../../../config.js'
+import { useEffect, useState } from 'react';
+import { databases, DATABASE_ID, TIMELINE_COLLECTION_ID } from '../../../../config.js';
+import { Query } from 'node-appwrite';
 
 const Timeline = () => {
-  const [items, setTimeline] = useState([])
-  const [error, setError] = useState(null)
+  const [items, setTimeline] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     init();
@@ -14,7 +15,9 @@ const Timeline = () => {
       const response = await databases.listDocuments(
         DATABASE_ID,
         TIMELINE_COLLECTION_ID,
-        // You might want to add queries or other options here
+        [
+          Query.orderDesc('$createdAt') // Sort by creation time, newest first
+        ]
       );
       
       setTimeline(response.documents);
@@ -33,7 +36,7 @@ const Timeline = () => {
     <div className="text-center w-full">
       <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
         {items.map((item, index) => (
-          <li key={item.$id || index}>  {/* Using $id if available for better key uniqueness */}
+          <li key={item.$id || index}>
             {index === 0 && (
               <hr className="mr-2 ml-2 bg-Black" />
             )}

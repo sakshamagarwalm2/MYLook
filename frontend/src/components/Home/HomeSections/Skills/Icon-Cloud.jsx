@@ -26,8 +26,13 @@ export const cloudProps = {
     clickToFront: 500,
     tooltipDelay: 0,
     outlineColour: "#0000",
-    maxSpeed: 0.04,
+    maxSpeed: 0.03,
     minSpeed: 0.02,
+    noMouse: window?.innerWidth <= 768, // Disable mouse/touch on mobile
+    pinchZoom: false, // Disable pinch zoom
+    dragControl: window?.innerWidth > 768, // Only enable drag on desktop
+    dragThreshold: 0, // Increase drag threshold
+    textHeight: 20,
   },
 };
 

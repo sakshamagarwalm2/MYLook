@@ -34,12 +34,12 @@ const Model = () => {
     if (modelRef.current) {
       modelRef.current.rotation.y = THREE.MathUtils.lerp(
         modelRef.current.rotation.y,
-        x * 0.5,
+        x * 0.4,
         0.1
       );
       modelRef.current.rotation.x = THREE.MathUtils.lerp(
         modelRef.current.rotation.x,
-        -y * 0.5,
+        -y * 0.4,
         0.1
       );
     }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { PinContainer } from "./3d-pin";
 import { databases, DATABASE_ID, PROJECT_COLLECTION_ID } from '../../config.js';
+import { Query } from "node-appwrite"; // Make sure to import Query from appwrite
 
 const ProjectCard = () => {
   const [projects, setProjects] = useState([]);
@@ -15,7 +16,10 @@ const ProjectCard = () => {
     try {
       const response = await databases.listDocuments(
         DATABASE_ID,
-        PROJECT_COLLECTION_ID
+        PROJECT_COLLECTION_ID,
+        [
+          Query.orderDesc('$updatedAt') // Using Query.orderDesc instead
+        ]
       );
 
       const fetchedProjects = response.documents.map(project => ({
@@ -23,7 +27,8 @@ const ProjectCard = () => {
         title: project.title,
         description: project.description,
         projectLink: project.projectLink,
-        imageUrl: project.imageUrl
+        imageUrl: project.imageUrl,
+        updatedAt: project.$updatedAt
       }));
 
       setProjects(fetchedProjects);
@@ -55,23 +60,22 @@ const ProjectCard = () => {
                 {project.description}
               </span>
             </div>
-            <a 
-              href={project.projectLink} 
-              target="_blank" 
+            <a
+              href={project.projectLink}
+              target="_blank"
               rel="noopener noreferrer"
               className="mt-4 inline-block text-blue-400 hover:underline"
             >
               View Project
             </a>
-            <div className="flex flex-1 w-full rounded-lg mt-4 bg-gradient-to-br from-violet-500 via-purple-500 to-blue-500" >
-            {project.imageUrl && (
-              // <h1>{project.imageUrl}</h1>
-              <img 
-                src={project.imageUrl} 
-                alt={project.title} 
-                className="w-full object-cover rounded-t-lg"
-              />
-            )}
+            <div className="flex flex-1 w-full rounded-lg mt-4 bg-gradient-to-br from-violet-500 via-purple-500 to-blue-500">
+              {project.imageUrl && (
+                <img
+                  src={project.imageUrl}
+                  alt={project.title}
+                  className="w-full object-cover rounded-t-lg"
+                />
+              )}
             </div>
           </div>
         </PinContainer>
