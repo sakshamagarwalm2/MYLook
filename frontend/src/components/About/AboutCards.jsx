@@ -245,6 +245,7 @@ const AboutCards = () => {
                   {[
                     "AI / Machine & Deep Learning",
                     "Web Dev (Frontend+Backend)",
+                    "DataBase Menagement Skills",
                     "Quantum Computing",
                   ].map((tech) => (
                     <span
