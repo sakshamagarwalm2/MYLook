@@ -34,7 +34,7 @@ const Timeline = () => {
 
   return (
     <div className="text-center w-full">
-      <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
+      <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical md:pr-14 md:pl-14 pr-3">
         {items.map((item, index) => (
           <li key={item.$id || index}>
             {index === 0 && (
@@ -50,9 +50,9 @@ const Timeline = () => {
                   : "timeline-end md:text-start"
               } mb-10`}
             >
-              <div className="text-sm italic text-start">{item.year}</div>
-              <div className="text-lg font-black text-start">{item.title}</div>
-              <div className="text-start">{item.description}</div>
+              <div className="text-sm itali">{item.year}</div>
+              <div className="text-lg font-black">{item.title}</div>
+              <div className="">{item.description}</div>
             </div>
             <hr className="mr-2 ml-2 bg-black" />
           </li>
