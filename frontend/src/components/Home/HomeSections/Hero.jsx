@@ -37,7 +37,7 @@ const Hero = () => {
             />
           </div>
           <div className="w-full h-auto flex justify-center items-center md:hidden  ">
-            <a href="https://huggingface.co/spaces/AstralLink/Gyana__AI" target="_blank" className="z-[1000] inline-flex h-auto p-4 w-auto uppercase text-lg invisible md:visible animate-shimmer items-center justify-center rounded-xl border-2 border-slate-400 focus:border-slate-200 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 hover:text-white transition-colors focus:text-slate-100">
+            <a href="https://huggingface.co/spaces/AstralLink/Gyana__AI" target="_blank" className="inline-flex h-auto p-4 w-auto uppercase text-lg invisible md:visible animate-shimmer items-center justify-center rounded-xl border-2 border-slate-400 focus:border-slate-200 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 hover:text-white transition-colors focus:text-slate-100">
             <Cpu className="w-5 h-5 mr-5" /> Explore Gyana AI
           </a>
           </div>
