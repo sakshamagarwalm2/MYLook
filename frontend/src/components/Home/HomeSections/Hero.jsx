@@ -17,7 +17,7 @@ const Hero = () => {
       </div>
       <div className="w-full h-screen md:pt-4 overflow-hidden">
         <div className="w-full h-auto  bg-stone-300/10 md:bg-transparent flex justify-center md:justify-end items-center md:pr-10 ">
-          <button className="inline-flex h-auto p-4 w-auto uppercase text-lg invisible md:visible animate-shimmer items-center justify-center rounded-xl border-2 border-slate-400 focus:border-slate-200 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 hover:text-white transition-colors focus:text-slate-100">
+          <button href="https://huggingface.co/spaces/AstralLink/Gyana__AI" className="inline-flex h-auto p-4 w-auto uppercase text-lg invisible md:visible animate-shimmer items-center justify-center rounded-xl border-2 border-slate-400 focus:border-slate-200 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 hover:text-white transition-colors focus:text-slate-100">
             <Cpu className="w-5 h-5 mr-5" /> Explore Gyana AI
           </button>
         </div>
@@ -37,7 +37,7 @@ const Hero = () => {
             />
           </div>
           <div className="w-full h-auto flex justify-center items-center md:hidden  ">
-            <button className="inline-flex h-auto p-4 w-auto uppercase text-lg animate-shimmer items-center justify-center rounded-xl border-2 border-slate-400 focus:border-slate-200 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 hover:text-white transition-colors focus:text-slate-100">
+            <button href="https://huggingface.co/spaces/AstralLink/Gyana__AI" className="inline-flex h-auto p-4 w-auto uppercase text-lg animate-shimmer items-center justify-center rounded-xl border-2 border-slate-400 focus:border-slate-200 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 hover:text-white transition-colors focus:text-slate-100">
               <Cpu className="w-5 h-5 mr-5" /> Explore Gyana AI
             </button>
           </div>
