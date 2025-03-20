@@ -17,7 +17,7 @@ const Model = () => {
     const handleResize = () => {
       if (modelRef.current) {
         const isMobile = window.innerWidth < 768;
-        modelRef.current.position.y = isMobile ? -0.2 : 0; // Adjusted mobile Y position
+        modelRef.current.position.y = isMobile ? 0.6 : 0; // Adjusted mobile Y position
       }
     };
     
@@ -82,7 +82,7 @@ const HelmetViewer = () => {
       <Canvas
         camera={{
           fov: 40,
-          position: [0, 0, window.innerWidth < 768 ? 4 : 3.5], // Adjusted mobile camera distance
+          position: [0, 0, window.innerWidth < 768 ? 4 : 3.5 ], // Adjusted mobile camera distance
           near: 0.1,
           far: 1000
         }}
