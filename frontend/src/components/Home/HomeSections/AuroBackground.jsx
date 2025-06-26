@@ -11,7 +11,7 @@ export const AuroraBackground = ({
     <div
       // Using min-h-screen to allow content to expand while maintaining minimum full height
       className={cn(
-        "relative flex flex-col h-full w-full items-center justify-center bg-zinc-50 dark:bg-zinc-900 text-slate-950 transition-bg overflow-hidden",
+        "relative flex flex-col h-full w-full items-center justify-center bg-zinc-900 text-slate-950 transition-bg overflow-hidden",
         className
       )}
       {...props}
