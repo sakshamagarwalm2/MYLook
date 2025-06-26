@@ -6,7 +6,7 @@ import SkillsCard from "./Skills/SkillsCard";
 const HomeSkill = () => {
   return (
     <div className="w-full h-full bg-zinc-900 ">
-      <div className="w-full h-full absolute">
+      <div className="w-full h-full absolute bg-black">
         <AuroraBackground />
       </div>
       <div className="w-full h-full relative flex flex-col justify-around  items-center text-white">
